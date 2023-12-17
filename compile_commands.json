@@ -1,0 +1,22 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-g",
+      "-O2",
+      "-pipe",
+      "-Wall",
+      "-Wextra",
+      "-std=c99",
+      "-I",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+      "-o",
+      "limine",
+      "limine.c"
+    ],
+    "directory": "/Users/owen_hayes/coding/os-dev/NotedOS/build/limine",
+    "file": "/Users/owen_hayes/coding/os-dev/NotedOS/build/limine/limine.c",
+    "output": "/Users/owen_hayes/coding/os-dev/NotedOS/build/limine/limine"
+  }
+]

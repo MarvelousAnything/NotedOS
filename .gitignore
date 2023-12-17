@@ -1,0 +1,5 @@
+build
+.ccls-cache
+.DS_STORE
+compiler_commands.json
+serial.log

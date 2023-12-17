@@ -1,5 +1,5 @@
-#ifndef _SYS_SERIAL_H_
-#define _SYS_SERIAL_H_
+#ifndef _SYS_IO_H_
+#define _SYS_IO_H_
 
 unsigned char inb(unsigned short int port);
 unsigned char inb_p(unsigned short int port);
@@ -28,4 +28,4 @@ void outsw(unsigned short int port, const void *addr,
 void outsl(unsigned short int port, const void *addr,
            unsigned long int count);
 
-#endif // !_SYS_SERIAL_H_
+#endif // !_SYS_IO_H_

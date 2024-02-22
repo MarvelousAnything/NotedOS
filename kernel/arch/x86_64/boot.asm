@@ -29,9 +29,10 @@ _start:
     cli
 
     mov rsp, stack_top
+    mov rbp, stack_bottom
 
-	push rbx
-	push rax
+    push rbx
+    push rax
 
     call kernel_main
 

@@ -27,7 +27,7 @@ int serial_received() {
    return inb(PORT + 5) & 1;
 }
  
-char read_serial() {
+unsigned char read_serial() {
    while (serial_received() == 0);
    return inb(PORT);
 }
@@ -39,9 +39,25 @@ int is_transmit_empty() {
 void write_serial(char a) {
    while (is_transmit_empty() == 0);
    outb(a, PORT);
+   outb(0, PORT);
 }
 
 void send_string(const char *s) {
-  for (char *p = s; *p != 0; p++)
+  const char *p = s;
+  do {
     write_serial(*p);
+  } while (*(++p) != 0);
+}
+
+void send_hex(unsigned int i) {
+  char buf[9];
+  buf[8] = 0;
+  for (int j = 7; j >= 0; j--) {
+    int digit = i & 0xF;
+    buf[j] = digit < 10 ? '0' + digit : 'A' + digit - 10;
+    i >>= 4;
+  }
+  for (char const *p = buf; *p != 0; p++) {
+    write_serial(*p);
+  }
 }

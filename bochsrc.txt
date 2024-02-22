@@ -1,0 +1,9 @@
+megs: 128
+romimage: file=/opt/homebrew/opt/bochs/share/bochs/BIOS-bochs-latest, address=0xfffe0000
+vgaromimage: file=/opt/homebrew/opt/bochs/share/bochs/VGABIOS-lgpl-latest
+ata0-slave: type=cdrom, path=build/noted.iso, status=inserted
+com1: enabled=1, mode=file, dev=serial.txt
+boot: cdrom
+mouse: enabled=0
+display_library: sdl2
+

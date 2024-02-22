@@ -4,8 +4,9 @@
 #define PORT 0x3f8
 
 int init_serial();
-char read_serial();
+unsigned char read_serial();
 void write_serial(char a);
 void send_string(const char *s);
+void send_hex(unsigned int i);
 
 #endif // !_SERIAL_H_

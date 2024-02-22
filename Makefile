@@ -19,11 +19,11 @@ OBJS += $(patsubst %.c, $(OUT_DIR)/%.c.o, $(C_SRCS))
 
 .PHONY: all kernel clean
 
+all: kernel limine disk
+
 include limine.mk
 include disk.mk
 include kernel/kernel.mk
-
-all: kernel limine disk
 
 kernel: $(OBJS)
 	@echo "Linking program ..."

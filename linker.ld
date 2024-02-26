@@ -1,4 +1,4 @@
-OUTPUT_FORMAT(elf64-x86-64)
+OUTPUT_FORMAT(elf32-i386)
 ENTRY(_start)
 
 SECTIONS {
@@ -19,6 +19,7 @@ SECTIONS {
   /* Read-only data section */
   .rodata : {
     *(.rodata*)
+    *(.font_data*)
   }
 
   /* Initialized data section */

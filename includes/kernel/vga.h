@@ -39,13 +39,13 @@ static inline uint16_t vga_entry(unsigned char uc, uint8_t color) {
   return (uint16_t) uc | (uint16_t) color << 8;
 }
 
-void init_vga(void);
+void init_vga();
 
 void vga_setcolor(uint8_t c);
 void vga_putentryat(char c, uint8_t color, size_t x, size_t y);
 
 void vga_putc(char c);
-void vga_puts(const char *str, size_t size);
+void vga_puts(const char *str);
 void vga_puti(int i);
 void vga_putx(int i);
 

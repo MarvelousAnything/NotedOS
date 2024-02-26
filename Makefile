@@ -4,9 +4,9 @@ CXX = $(CPU_ARCH)-elf-g++
 LD = $(CPU_ARCH)-elf-ld
 ASM = nasm
 
-CC_FLAGS = -c -fno-pie -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -ffreestanding -g -m64 -I includes
-ASM_FLAGS = -f elf64 -F dwarf -g -Wall
-LD_FLAGS = -T linker.ld -m elf_x86_64 -nostdlib -static --no-dynamic-linker -Map=$(OUT_DIR)/kernel.map
+CC_FLAGS = -c -fno-pie -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -ffreestanding -g -m32 -I includes
+ASM_FLAGS = -f elf32 -F dwarf -g -Wall
+LD_FLAGS = -T linker.ld -m elf_i386 -nostdlib -static --no-dynamic-linker -Map=$(OUT_DIR)/kernel.map
 ASM_SRCS =
 C_SRCS = 
 

@@ -39,7 +39,6 @@ int is_transmit_empty() {
 void write_serial(char a) {
    while (is_transmit_empty() == 0);
    outb(a, PORT);
-   outb(0, PORT);
 }
 
 void send_string(const char *s) {
@@ -57,7 +56,16 @@ void send_hex(unsigned int i) {
     buf[j] = digit < 10 ? '0' + digit : 'A' + digit - 10;
     i >>= 4;
   }
-  for (char const *p = buf; *p != 0; p++) {
-    write_serial(*p);
+  send_string(buf);
+}
+
+void send_hex_long(unsigned long i) {
+  char buf[17];
+  buf[16] = 0;
+  for (int j = 15; j >= 0; j--) {
+    int digit = i & 0xF;
+    buf[j] = digit < 10 ? '0' + digit : 'A' + digit - 10;
+    i >>= 4;
   }
+  send_string(buf);
 }

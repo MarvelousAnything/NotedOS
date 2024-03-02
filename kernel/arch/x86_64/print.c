@@ -1,6 +1,5 @@
 #include "kernel/print.h"
 #include "kernel/serial.h"
-#include "kernel/vga.h"
 
 static void itoa(char *buf, int base, int d) {
   char *p = buf;
@@ -46,7 +45,6 @@ void printk(const char *format, ...) {
 
   while ((c = *format++) != 0) {
     if (c != '%') {
-      vga_putc(c);
       write_serial(c);
     } else {
       char *p, *p2;
@@ -81,17 +79,14 @@ void printk(const char *format, ...) {
         for (p2 = p; *p2; p2++)
           ;
         for (; p2 < p + pad; p2++) {
-          vga_putc(pad0 ? '0' : ' ');
           write_serial(pad0 ? '0' : ' ');
         }
         while (*p) {
-          vga_putc(*p);
           write_serial(*p++);
         }
         break;
 
       default:
-        vga_putc(*((int *)arg));
         write_serial(*((int *)arg++));
         break;
       }

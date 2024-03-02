@@ -88,6 +88,11 @@ void draw_string_scaled(int x, int y, const char *str, uint32_t color,
   }
 }
 
+void draw_lines(int x, int y, const char *strs[], int lines, uint32_t color, int spacing, int scale) {
+  for (int i = 0; i < lines; i++)
+    draw_string_scaled(x, y + (i * (16 + 1)), strs[i], color, spacing, scale);
+}
+
 int char_width(int scale) { return 8 * scale; }
 
 int text_width(const char *str, int spacing, int scale) {

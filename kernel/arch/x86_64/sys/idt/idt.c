@@ -2,7 +2,12 @@
 #include <kernel/sys/idt.h>
 #include <stdint.h>
 
+__attribute__((aligned(0x10)))
+static idt_entry_t idt[IDT_ENTRIES];
+static idtr_t idtr;
+
 extern void* isr_stub_table[];
+
 
 
 static const char* exception_messages[] = {
@@ -54,12 +59,13 @@ void idt_set_descriptor(uint8_t vector, void* isr, uint16_t sel, uint8_t flags) 
   descriptor->reserved       = 0;
 }
 
-static bool test = true;
-static int a;
-
 void exception_handler(int_frame_t frame) {
   if (frame.vector < EXCEPTION_COUNT) {
-    printf("Exception occurred: %s\n", exception_messages[frame.vector]);
+    if (frame.vector == 3) {
+      printf("Exception occured: %s: 0x%p\n", exception_messages[frame.vector], frame.rip);
+    } else {
+      printf("Exception occurred: %s\n", exception_messages[frame.vector]);
+    }
   } else {
     printf("Unknown exception vector: %llu\n", frame.vector);
   }

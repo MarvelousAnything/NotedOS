@@ -56,9 +56,6 @@ typedef struct {
 } __attribute__((packed)) int_frame_t;
 
 #define IDT_ENTRIES 256
-__attribute__((aligned(0x10)))
-static idt_entry_t idt[IDT_ENTRIES];
-static idtr_t idtr;
 
 void idt_init(void);
 void idt_set_descriptor(uint8_t vector, void* isr, uint16_t sel, uint8_t flags);

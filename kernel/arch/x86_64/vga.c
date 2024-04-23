@@ -1,6 +1,6 @@
 #include "kernel/vga.h"
 #include <stdint.h>
-#include <sys/_types/_size_t.h>
+#include <sys/types.h>
 
 volatile unsigned int row;
 volatile unsigned int col;
